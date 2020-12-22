@@ -7,7 +7,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
-import pages.IssuePage;
+import pages.IssuesPage;
 import pages.LoginPage;
 import pages.MyViewPage;
 
@@ -42,11 +42,11 @@ public class MyViewFilter {
         myViewPage.setIssueSearch(issue);
     }
 
-    @Then("^system shows a error \"(.*)\"$")
-    public void system_shows_a_error(String message) {
+    @Then("^system shows an error \"(.*)\"$")
+    public void system_shows_an_error(String message) throws InterruptedException {
         MyViewPage myViewPage = new MyViewPage(getDriver());
 
-        myViewPage.assertMessage(getDriver(), message);
+        Assert.assertTrue(myViewPage.assertMessage(message));
     }
 
     @When("user enters valid issue number")
@@ -58,19 +58,19 @@ public class MyViewFilter {
 
     @Then("system shows issue details")
     public void system_shows_issue_details() {
-        IssuePage issuePage = new IssuePage(getDriver());
+        IssuesPage issuesPage = new IssuesPage(getDriver());
 
-        Assert.assertEquals(issuePage.getText(), "0005462");
+        Assert.assertEquals(issuesPage.getText(), "0005462");
     }
 
     @And("searched issue is placed in Recently visited")
     public void searched_issue_is_placed_in_recently_visited() {
         MyViewPage myViewPage = new MyViewPage(getDriver());
-        IssuePage issuePage = new IssuePage(getDriver());
+        IssuesPage issuesPage = new IssuesPage(getDriver());
 
         myViewPage.clickMyView();
 
-        issuePage.assertSearchedIssueIsRecentlyVisited("0005462");
+        issuesPage.assertSearchedIssueIsRecentlyVisited("0005462");
     }
 
     @Given("project has one or more issues")
@@ -88,7 +88,7 @@ public class MyViewFilter {
     public void projects_issues_are_listed() {
         MyViewPage myViewPage = new MyViewPage(getDriver());
 
-        myViewPage.assertMessage(getDriver(), "0005462");
+        Assert.assertTrue(myViewPage.assertMessage("0005462"));
     }
 
 }

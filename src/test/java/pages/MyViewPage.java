@@ -43,5 +43,5 @@ public class MyViewPage extends BasePage {
 
     public boolean assertDefaultProjectIsSelected(){ return utils.assertOptionIsSelected(this.firstOptionSelectProject); }
 
-    public boolean assertMessage(WebDriver driver, String text){ return driver.getPageSource().contains(text); }
+    public boolean assertMessage(String text){ return utils.assertMessage(text); }
 }

@@ -7,7 +7,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
-import pages.IssuePage;
+import pages.IssuesPage;
 import pages.MyViewPage;
 import pages.ViewIssuesPage;
 
@@ -44,7 +44,7 @@ public class ViewIssuesForOneProject {
     public void system_lists_corresponding_issues_for_the_project() {
         ViewIssuesPage viewIssuesPage = new ViewIssuesPage(getDriver());
 
-        viewIssuesPage.assertSearch(getDriver(), "0005462");
+        Assert.assertTrue(viewIssuesPage.assertSearch(getDriver(), "0005462"));
     }
 
     @When("user search a specific project's issue")
@@ -59,7 +59,7 @@ public class ViewIssuesForOneProject {
     public void system_list_corresponding_issue() {
         ViewIssuesPage viewIssuesPage = new ViewIssuesPage(getDriver());
 
-        viewIssuesPage.assertSearch(getDriver(), "0005462");
+        Assert.assertTrue(viewIssuesPage.assertSearch(getDriver(), "0005462"));
     }
 
     @And("user access issue details")
@@ -71,9 +71,9 @@ public class ViewIssuesForOneProject {
 
     @And("system shows page with issue details")
     public void system_shows_page_with_issue_details() {
-        IssuePage issuePage = new IssuePage(getDriver());
+        IssuesPage issuesPage = new IssuesPage(getDriver());
 
-        Assert.assertEquals(issuePage.getText(), "0005462");
+        Assert.assertEquals(issuesPage.getText(), "0005462");
     }
 
     @When("user search an issue not belonging to selected project")

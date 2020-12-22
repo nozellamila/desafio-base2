@@ -1,16 +1,11 @@
 package utils;
 
 import org.junit.Assert;
-import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import static utils.DriverFactory.getDriver;
 
@@ -44,6 +39,22 @@ public class Utils {
         }catch (Exception e){
             Assert.fail(e.toString());
             return false;
+        }
+    }
+
+    public void selectOptionCategory(String option){
+        if(option != null && option != ""){
+            By locator = By.xpath("//option[contains(text(), '" + option + "')]");
+            WebElement webElement;
+
+            try {
+                WebDriverWait wait = new WebDriverWait(getDriver(), 10);
+                wait.until(ExpectedConditions.elementToBeClickable(locator));
+                webElement = getDriver().findElement(locator);
+                webElement.click();
+            }catch (Exception e){
+                Assert.fail(e.toString());
+            }
         }
     }
 
@@ -86,4 +97,10 @@ public class Utils {
             return false;
         }
     }
+
+    public boolean assertMessage(String text) {
+        Boolean retorno = getDriver().getPageSource().contains(text);
+        return retorno;
+    }
+
 }

@@ -1,4 +1,4 @@
-Feature: Realizar login
+Feature: Login
 
   Scenario: Check login is working properly with credentials
 

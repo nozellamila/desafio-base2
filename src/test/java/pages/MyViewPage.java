@@ -1,5 +1,7 @@
 package pages;
 
+import org.junit.Assert;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -12,6 +14,18 @@ public class MyViewPage extends BasePage {
     @FindBy(linkText = "Logout")
     WebElement textLogout;
 
+    @FindBy(linkText = "My View")
+    WebElement textMyView;
+
+    @FindBy(xpath = "//select/option[1]")
+    WebElement firstOptionSelectProject;
+
+    @FindBy(xpath = "//option[contains(text(), 'Mila Nozella´s Project')]")
+    WebElement optionMilasProject;
+
+    @FindBy(name = "bug_id")
+    WebElement issueSearch;
+
     WebDriver driver;
 
     public MyViewPage(WebDriver driver){
@@ -19,7 +33,15 @@ public class MyViewPage extends BasePage {
         PageFactory.initElements(driver, this);
     }
 
-    public void checkSuccessfulLogin(){
-        utils.checkIsDisplayed(this.textLogout);
-    }
+    public void clickMyView(){ utils.click(textMyView);}
+
+    public void setIssueSearch(String text){ utils.setTextField(this.issueSearch, text + Keys.ENTER); }
+
+    public void selectMilasProject(){ utils.click(this.optionMilasProject); }
+
+    public void assertSuccessfulLogin(){ utils.checkIsDisplayed(this.textLogout); }
+
+    public boolean assertDefaultProjectIsSelected(){ return utils.assertOptionIsSelected(this.firstOptionSelectProject); }
+
+    public boolean assertMessage(WebDriver driver, String text){ return driver.getPageSource().contains(text); }
 }

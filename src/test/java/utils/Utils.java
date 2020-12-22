@@ -28,21 +28,8 @@ public class Utils {
         }
     }
 
-
-    public String getText(WebElement webElement) {
+    public String getValue(WebElement webElement) {
         return webElement.getAttribute("value");
-    }
-
-    /********* Button ************/
-
-    public void clickButton(WebElement webElement) {
-        try {
-            WebDriverWait wait = new WebDriverWait(getDriver(), 10);
-            wait.until(ExpectedConditions.elementToBeClickable(webElement));
-            webElement.click();
-        }catch (Exception e){
-            Assert.fail(e.toString());
-        }
     }
 
     /********** LinkText **********/
@@ -55,5 +42,49 @@ public class Utils {
         }catch (Exception e){
             Assert.fail(e.toString());
         }
+    }
+
+    /*********** Select ***********/
+
+    public boolean assertOptionIsSelected(WebElement webElement){
+        try {
+            WebDriverWait wait = new WebDriverWait(getDriver(), 10);
+            wait.until(ExpectedConditions.elementToBeClickable(webElement));
+            return webElement.isSelected();
+
+        }catch (Exception e){
+            Assert.fail(e.toString());
+            return false;
+        }
+    }
+
+    /*********** General **********/
+
+    public void click(WebElement webElement) {
+        try {
+            WebDriverWait wait = new WebDriverWait(getDriver(), 10);
+            wait.until(ExpectedConditions.elementToBeClickable(webElement));
+            webElement.click();
+        }catch (Exception e){
+            Assert.fail(e.toString());
+        }
+    }
+
+    public String getText(WebElement webElement){
+        return webElement.getText();
+    }
+
+    public void assertTextEquals(WebElement webElement, String text){
+        try {
+            WebDriverWait wait = new WebDriverWait(getDriver(), 10);
+            wait.until(ExpectedConditions.elementToBeClickable(webElement));
+
+            String elementText = this.getText(webElement);
+
+            Assert.assertEquals(elementText, text);
+        }catch (Exception e){
+            Assert.fail(e.toString());
+        }
+
     }
 }

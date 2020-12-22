@@ -37,6 +37,6 @@ public class LoginPage extends BasePage {
     }
 
     public void clickBtnLogin() {
-        utils.clickButton(this.btnLogin);
+        utils.click(this.btnLogin);
     }
 }

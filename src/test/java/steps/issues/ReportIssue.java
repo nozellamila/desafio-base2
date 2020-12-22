@@ -9,11 +9,12 @@ import io.cucumber.java.en.When;
 import org.junit.Assert;
 import pages.IssuesPage;
 import pages.MyViewPage;
+import utils.BaseTest;
 
 import static utils.DriverFactory.getDriver;
 import static utils.DriverFactory.killDriver;
 
-public class ReportIssue {
+public class ReportIssue extends BaseTest {
 
     @Before
     public void onSetUp(){

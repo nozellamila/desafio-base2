@@ -10,11 +10,12 @@ import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import pages.LoginPage;
 import pages.MyViewPage;
+import utils.BaseTest;
 
 import static utils.DriverFactory.getDriver;
 import static utils.DriverFactory.killDriver;
 
-public class MyView {
+public class MyView extends BaseTest {
 
     @Before
     public void onSetUp(){

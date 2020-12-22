@@ -10,11 +10,12 @@ import org.junit.Assert;
 import pages.IssuesPage;
 import pages.LoginPage;
 import pages.MyViewPage;
+import utils.BaseTest;
 
 import static utils.DriverFactory.getDriver;
 import static utils.DriverFactory.killDriver;
 
-public class MyViewFilter {
+public class MyViewFilter extends BaseTest {
 
     @Before
     public void onSetUp(){

@@ -10,11 +10,12 @@ import org.junit.Assert;
 import pages.IssuesPage;
 import pages.MyViewPage;
 import pages.ViewIssuesPage;
+import utils.BaseTest;
 
 import static utils.DriverFactory.getDriver;
 import static utils.DriverFactory.killDriver;
 
-public class ViewIssuesForOneProject {
+public class ViewIssuesForOneProject extends BaseTest {
 
     @Before
     public void onSetUp(){

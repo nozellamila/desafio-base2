@@ -17,7 +17,7 @@ public class MyViewPage extends BasePage {
     @FindBy(linkText = "My View")
     WebElement textMyView;
 
-    @FindBy(xpath = "//select/option[1]")
+    @FindBy(xpath = "//option[contains(text(), 'All Projects')]")
     WebElement firstOptionSelectProject;
 
     @FindBy(xpath = "//option[contains(text(), 'Mila Nozella´s Project')]")

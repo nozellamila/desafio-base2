@@ -32,17 +32,6 @@ public class Utils {
         return webElement.getAttribute("value");
     }
 
-    /********** LinkText **********/
-
-    public void checkIsDisplayed(WebElement webElement) {
-        try {
-            WebDriverWait wait = new WebDriverWait(getDriver(), 10);
-            wait.until(ExpectedConditions.elementToBeClickable(webElement));
-            webElement.isDisplayed();
-        }catch (Exception e){
-            Assert.fail(e.toString());
-        }
-    }
 
     /*********** Select ***********/
 
@@ -85,6 +74,16 @@ public class Utils {
         }catch (Exception e){
             Assert.fail(e.toString());
         }
+    }
 
+    public boolean checkIsDisplayed(WebElement webElement) {
+        try {
+            WebDriverWait wait = new WebDriverWait(getDriver(), 10);
+            wait.until(ExpectedConditions.elementToBeClickable(webElement));
+            return webElement.isDisplayed();
+        }catch (Exception e){
+            Assert.fail(e.toString());
+            return false;
+        }
     }
 }

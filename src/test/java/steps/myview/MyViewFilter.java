@@ -6,17 +6,10 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.junit.AfterClass;
 import org.junit.Assert;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import pages.IssuePage;
 import pages.LoginPage;
 import pages.MyViewPage;
-
-import java.util.concurrent.TimeUnit;
 
 import static utils.DriverFactory.getDriver;
 import static utils.DriverFactory.killDriver;
